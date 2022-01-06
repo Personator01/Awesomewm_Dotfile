@@ -49,9 +49,17 @@ theme.titlebar_close_button_normal = gfs.get_configuration_dir() .. "icons/title
 theme.titlebar_close_button_focus  = gfs.get_configuration_dir() .. "icons/titlebar/button_magenta.png"
 theme.titlebar_close_button_focus_hover = gfs.get_configuration_dir() .. "icons/titlebar/button_magenta_light.png"
 
+theme.titlebar_floating_button_normal_inactive = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
+theme.titlebar_floating_button_focus_inactive  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
+theme.titlebar_floating_button_normal_active = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
+theme.titlebar_floating_button_focus_active  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
+theme.titlebar_floating_button_focus_active_hover  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple_light.png"
+theme.titlebar_floating_button_focus_inactive_hover  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple_light.png"
+
 theme.titlebar_minimize_button_normal = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
 theme.titlebar_minimize_button_focus  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
 theme.titlebar_minimize_button_focus_hover  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple_light.png"
+
 
 theme.titlebar_maximized_button_normal_inactive = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"
 theme.titlebar_maximized_button_focus_inactive  = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"

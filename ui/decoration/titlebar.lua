@@ -36,7 +36,7 @@ client.connect_signal("request::titlebars", function(c)
         end))
 
         local close = awful.titlebar.widget.closebutton(c)
-        local minimize = awful.titlebar.widget.minimizebutton(c)
+        local float = awful.titlebar.widget.floatingbutton(c)
         local maximize = awful.titlebar.widget.maximizedbutton(c)
 
     local title_bg = backg
@@ -67,7 +67,7 @@ client.connect_signal("request::titlebars", function(c)
 		    {
 		    
                         wibox.layout.margin(maximize, 8, 6, 6, 6),
-                        wibox.layout.margin(minimize, 8, 6, 6, 6), 
+                        wibox.layout.margin(float, 8, 6, 6, 6), 
                         wibox.layout.margin(close, 8, 16, 6, 6), 
 			layout= wibox.layout.fixed.horizontal,
 		    },
