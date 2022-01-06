@@ -1,0 +1,66 @@
+/**
+  * @name FunnyTheme
+  * @author Based on Nebula by Loremly#9359
+  * @donate https://www.patreon.com/aetheryx
+  * @description Funny theme
+  * @invite powercord
+  * @source https://github.com/Loremly/Nebula/blob/main/nebula.theme.css
+  * @website https://github.com/loremly/Nebula
+  * @version 5.9.26
+*/
+/*
+╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ Theme Settings                                                                                                     ║
+╠══════════════════════════╦═════════════════════════════════════════════════════════════════════════════════════════╣
+║ Theme:                   ║ FunnyTheme                                                                                 ║
+║ version:                 ║ 5.9.26                                                                                  ║
+║ author:                  ║ Loremly#9359                                                                            ║
+╠══════════════════════════╩═════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                                                    ║
+║ custom time lmao                                         ║
+║                                                                                                                    ║
+║ A large amount of Nebula is inspired from CorellanStoma's CreArts Discord theme. Check It out!                     ║
+║ ● https://github.com/CorellanStoma/CreArts-Discord                                                                 ║
+║                                                                                                                    ║
+║ More information about Powercord can be found here:                                                                ║
+║ ● https://powercord.dev/                                                                                           ║
+║                                                                                                                    ║
+║ If you need more support join the Nebula Community:                                                                ║
+║ ● https://discord.com/invite/powercord                                                                             ║
+║                                                                                                                    ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+*/
+
+
+/* 
+╔══════════════════════════╦═════════════════════════════════════════════════════════════════════════════════════════╗
+║ Source Import            ║ I wouldnt remove that import line unless you dont want the theme.... To each his own ig ║
+╚══════════════════════════╩═════════════════════════════════════════════════════════════════════════════════════════╝
+*/
+
+
+/*
+╔══════════════════════╦════════════════════════════════════╗
+║ Cosmetic Variables   ║ Format: px, calc()                 ║
+╚══════════════════════╩════════════════════════════════════╝
+*/
+:root{
+  --background-primary: #f0deff;
+  --background-secondary: #dcb6fc;
+  --background-secondary-alt: #cc92fc;
+  --background-tertiary: #df93fd;
+  --text-normal: #0077ff;
+  --text-muted: #00aaff;
+  --background-overlay: #dcb0ff;
+  --channels-default: #00aaff;
+  --interactive-normal: #cc00ff;
+  --interactive-muted: #68ccfd;
+  --interactive-active: #0077ff;
+  --header-secondary: #9500ff;
+  --channeltextarea-background: #dcb6fc;
+
+  --btn-bg-primary: #00aaff;
+  --btn-bg-secondary: #202442;
+  --btn-bg-primary-hover: #1b1e35;
+  --btn-bg-secondary-hover: #22295a;
+}

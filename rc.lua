@@ -10,6 +10,13 @@ local beautiful = require("beautiful")
 -- 🎨 Theme
 
 beautiful.init(gfs.get_configuration_dir() .. "theme/theme.lua")
+local bg = beautiful.bg_normal
+local fg = beautiful.text_color
+local ansi = beautiful.ansi
+awful.spawn("sed -i '9s/.*/        background = \"" .. bg .. "\",/' " .. gfs.get_configuration_dir() .. "../wezterm/wezterm.lua")
+awful.spawn("sed -i '8s/.*/        foreground = \"" .. fg .. "\",/' " .. gfs.get_configuration_dir() .. "../wezterm/wezterm.lua")
+awful.spawn("sed -i \"17s/.*/        ansi = " .. ansi .. ",/\" " .. gfs.get_configuration_dir() .. "../wezterm/wezterm.lua")
+awful.spawn("sed -i \"18s/.*/        brights = " .. ansi .. ",/\" " .. gfs.get_configuration_dir() .. "../wezterm/wezterm.lua")
 
 -- ✨ Modules
 
@@ -21,7 +28,8 @@ require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 require("config")
 require("ui")
-require("notifications")
+require("awful.remote")
+--require("notifications")
 
 -- 🚀 Launch Script
 

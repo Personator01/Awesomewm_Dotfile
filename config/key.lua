@@ -4,16 +4,17 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local gfs = require("gears.filesystem")
 
 require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
 
-terminal = "kitty"
-browser = "google-chrome-stable"
+terminal = "wezterm"
+browser = "firefox"
 fm = "thunar"
 vscode = "code"
 discord = "discord"
-editor = os.getenv("EDITOR") or "nvim"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 clientbuttons = gears.table.join(
@@ -32,6 +33,8 @@ clientbuttons = gears.table.join(
 
 modkey = "Mod4"
 
+local switcher = require("awesome-switcher")
+
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 globalkeys = gears.table.join(
@@ -41,7 +44,7 @@ globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+    awful.key({ modkey, "Control"  }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
@@ -59,6 +62,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "spawn browser", group = "launcher"}),
 
+    awful.key({ modkey,           }, "t", function () awful.spawn(terminal) end,
+              {description = "spawn terminal`", group = "launcher"}),
+    awful.key({ modkey,           }, "f", function () awful.spawn(fm) end,
+              {description = "open the file manager", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,           }, "Tab",
@@ -91,8 +98,10 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ }, "Print", function () awful.spawn.easy_async_with_shell("scrot -cd1 -q100 ~/Pictures/H%M%S.png") end, 
+    awful.key({ }, "Print", function () awful.spawn.easy_async_with_shell("scrot -s -q100 ~/Pictures/screenshots/H%M%S.png") end, 
               {description = "take screenshot", group = "screen"}),
+    awful.key({ modkey,       }, "Escape", function () awful.spawn.easy_async_with_shell(gfs.get_configuration_dir() .. "scripts/lock.sh") end, 
+              {description = "lock the screen", group = "screen"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -129,12 +138,25 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
     -- emoji
     awful.key({ modkey }, "d", function() awful.spawn.easy_async_with_shell("rofi-emoji.sh") end,
-              {description = "emoji menu", group = "launcher"})
+              {description = "emoji menu", group = "launcher"}),
+
+    --Switcher
+    awful.key({"Mod1",          }, "Tab",
+      function()
+        switcher.switch(1,"Mod1", "Alt_L", "Shift", "Tab")
+      end,
+      {description = "switch windows"}),
+
+    awful.key({ "Mod1", "Shift"   }, "Tab",
+          function ()
+        switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
+    end,
+    {description = "switch windows backwards"})
 
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
+    awful.key({ modkey,  "Control"   }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
             c:raise()

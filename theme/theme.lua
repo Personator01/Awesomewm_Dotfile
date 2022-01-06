@@ -11,26 +11,29 @@ local theme = {}
 
 -- themes
 
-theme.font          = "Consolas 10"
+theme.font          = "Roboto Mono Medium 14"
 
 theme.dir = string.format('%s/.config/awesome/theme', os.getenv('HOME'))
 
-theme.wallpaper     = gfs.get_configuration_dir() .. "wallpapers/bright.png"
+theme.wallpaper     = gfs.get_configuration_dir() .. "wallpapers/funny_night.jpg"
 
-theme.bg_normal     = "#ffffff"
-theme.bg_focus      = "#ffffff"
+theme.bg_normal     = "#675375"
+--theme.bg_normal     = "#806594"
+theme.bg_focus      = "#9cd6ff"
 theme.bg_widget     = "#f5f5f5"
+theme.bg_second	    = "#4d4454"
+theme.text_color    = "#f0deff"
+theme.ansi          = "{'#00d5ff', '#ff00ff', '#009dff', '#c300ff', '#00ccff', '#bb5cff', '#529dff', '#c573ff'}"
+theme.fg_normal     = "#00aaff"
+theme.fg_focus     = "#ff00ff"
 
-theme.fg_normal     = "#000000"
-theme.fg_focus     = "#000000"
-
-theme.useless_gap   = 20
+theme.useless_gap   = 15
 theme.border_radius = 10
 theme.sidebar_radius = 40
 
 -- icon
 
-theme.icon_font_name = "FiraCode Nerd Font Mono "
+theme.icon_font_name = "Roboto Mono Medium 14"
 
 -- widget
 
@@ -42,20 +45,22 @@ theme.notification_icon = gfs.get_configuration_dir() .. "icons/notifications/no
 
 -- titlebar
 
-theme.titlebar_close_button_normal = gfs.get_configuration_dir() .. "icons/titlebar/close_inactive.png"
-theme.titlebar_close_button_focus  = gfs.get_configuration_dir() .. "icons/titlebar/close.png"
-theme.titlebar_close_button_focus_hover = gfs.get_configuration_dir() .. "icons/titlebar/close_hover.png"
+theme.titlebar_close_button_normal = gfs.get_configuration_dir() .. "icons/titlebar/button_magenta.png"
+theme.titlebar_close_button_focus  = gfs.get_configuration_dir() .. "icons/titlebar/button_magenta.png"
+theme.titlebar_close_button_focus_hover = gfs.get_configuration_dir() .. "icons/titlebar/button_magenta_light.png"
 
-theme.titlebar_minimize_button_normal = gfs.get_configuration_dir() .. "icons/titlebar/minimize_inactive.png"
-theme.titlebar_minimize_button_focus  = gfs.get_configuration_dir() .. "icons/titlebar/minimize.png"
-theme.titlebar_minimize_button_focus_hover  = gfs.get_configuration_dir() .. "icons/titlebar/minimize_hover.png"
+theme.titlebar_minimize_button_normal = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
+theme.titlebar_minimize_button_focus  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
+theme.titlebar_minimize_button_focus_hover  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple_light.png"
 
-theme.titlebar_floating_button_normal_inactive = gfs.get_configuration_dir() .. "icons/titlebar/float_inactive.png"
-theme.titlebar_floating_button_focus_inactive  = gfs.get_configuration_dir() .. "icons/titlebar/float.png"
-theme.titlebar_floating_button_normal_active = gfs.get_configuration_dir() .. "icons/titlebar/float_inactive.png"
-theme.titlebar_floating_button_focus_active  = gfs.get_configuration_dir() .. "icons/titlebar/float.png"
-theme.titlebar_floating_button_focus_active_hover  = gfs.get_configuration_dir() .. "icons/titlebar/float_hover.png"
-theme.titlebar_floating_button_focus_inactive_hover  = gfs.get_configuration_dir() .. "icons/titlebar/float_hover.png"
+theme.titlebar_maximized_button_normal_inactive = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"
+theme.titlebar_maximized_button_focus_inactive  = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"
+theme.titlebar_maximized_button_normal_active = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"
+theme.titlebar_maximized_button_focus_active  = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"
+theme.titlebar_maximized_button_focus_active_hover  = gfs.get_configuration_dir() .. "icons/titlebar/button_blue_light.png"
+theme.titlebar_maximized_button_focus_inactive_hover  = gfs.get_configuration_dir() .. "icons/titlebar/button_blue_light.png"
+
+
 
 theme.icon_theme = nil
 

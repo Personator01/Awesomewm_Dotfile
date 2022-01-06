@@ -12,6 +12,8 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 local helpers = require("helpers")
 
+local backg = beautiful.bg_second
+
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
@@ -35,9 +37,9 @@ client.connect_signal("request::titlebars", function(c)
 
         local close = awful.titlebar.widget.closebutton(c)
         local minimize = awful.titlebar.widget.minimizebutton(c)
-        local float = awful.titlebar.widget.floatingbutton(c)
+        local maximize = awful.titlebar.widget.maximizedbutton(c)
 
-    local title_bg = "#ffffff"
+    local title_bg = backg
 
     awful.titlebar(c, {
         position = "top",
@@ -48,17 +50,31 @@ client.connect_signal("request::titlebars", function(c)
             {
                 {
                     {
-                        wibox.layout.margin(close, 14, 6, 12, 6), 
-                        wibox.layout.margin(minimize, 8, 6, 12, 6), 
-                        wibox.layout.margin(float, 8, 6, 12, 6), 
                         layout = wibox.layout.fixed.horizontal,
                         {
                             layout = wibox.layout.fixed.horizontal,
                         },
                     },
+		    {
+                	{
+                    		align  = 'center',
+                    		widget = awful.titlebar.widget.titlewidget(c),
+                	},
+            		buttons = buttons,
+            		layout  = wibox.layout.flex.horizontal
+            	    },
+		    
+		    {
+		    
+                        wibox.layout.margin(maximize, 8, 6, 6, 6),
+                        wibox.layout.margin(minimize, 8, 6, 6, 6), 
+                        wibox.layout.margin(close, 8, 16, 6, 6), 
+			layout= wibox.layout.fixed.horizontal,
+		    },
                     layout = wibox.layout.align.horizontal
                 },
                 bg = title_bg,
+		--buttons = buttons,
                 shape = helpers.prrect(beautiful.border_radius, true, true,
                                        false, false),
                 widget = wibox.container.background
@@ -75,7 +91,7 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c, {
         position = "bottom",
-        size = beautiful.border_radius * 2,
+        size =  20,
         bg = "#00000000"
     }):setup{
         {
@@ -95,6 +111,7 @@ client.connect_signal("request::titlebars", function(c)
                     layout = wibox.layout.align.horizontal
                 },
                 bg = title_bg,
+		buttons = buttons,
                 shape = helpers.prrect(beautiful.border_radius, false, false,
                                        true, true),
                 widget = wibox.container.background

@@ -1,5 +1,6 @@
 local awful = require("awful")
 local gears = require("gears")
+local gfs = require("gears.filesystem")
 
 local function run_once(cmd)
   local findme = cmd
@@ -12,7 +13,9 @@ end
 
 -- picom
 
-run_once("picom --experimental-backends --config " ..
-             gears.filesystem.get_configuration_dir() .. "config/picom.conf")
+
+awful.spawn.with_shell("picom")
+awful.spawn.with_shell("xrandr --output DP-0 --output DP-2 --left-of DP-0")
+awful.spawn.with_shell("xautolock -time 10 -locker " .. gfs.get_configuration_dir() .. "scripts/lock.sh") 
 
 return autostart

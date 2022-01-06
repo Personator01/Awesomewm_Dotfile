@@ -11,6 +11,8 @@ require("awful.autofocus")
 
 beautiful.init(gfs.get_configuration_dir() .. "theme/theme.lua")
 
+
+
 local function format_progress_bar(bar)
     local w = wibox.widget {
         nil,
@@ -27,7 +29,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Taglist
 
     -- Set tags and default layout
-    awful.tag({"Play", "Web", "Music", "Movie", "Fun"}, s,   awful.layout.suit.tile)
+    awful.tag({"1", "2", "3", "4", "5", "6"}, s,   awful.layout.suit.tile)
     
     local taglist_buttons = gears.table.join(
         awful.button({ }, 1, function(t) t:view_only() end),
@@ -123,12 +125,121 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Music
 
-    local music = require("widgets.playerctl_bar")
-    
+    --local music = require("widgets.playerctl_bar")
+   
+    local musiccontrol = wibox.widget{
+            {
+                    {
+                            {
+                        image = icons.png.chevron,
+                        widget = wibox.widget.imagebox,
+                        buttons = (gears.table.join(
+                                awful.button({},1,nil,function()
+                                awful.spawn("mpc prev")
+                                end)
+                        )),
+                        resize = true,
+                        },
+                direction = 'east',
+                widget = wibox.container.rotate
+                },
+                top = 5,
+                bottom = 5,
+                left = 10,
+                right = 5,
+                widget = wibox.container.margin
+            },
+            {
+                    {
+
+
+                        image = icons.png.pause,
+                        buttons = (gears.table.join(
+                        awful.button({},1,nil, function()
+                        awful.spawn("mpc toggle")
+                                end)
+                                )),
+                        resize = true,
+                        widget = wibox.widget.imagebox
+                    },
+                    left = 10,
+                    right = 10,
+                    top = 5,
+                    bottom = 5,
+                    widget = wibox.container.margin
+            },
+	    {
+                    {
+                            {
+                                image = icons.png.chevron,
+                                buttons = (gears.table.join(
+                                awful.button({}, 1, nil, function()
+                                awful.spawn("mpc next")
+                                end)
+                                )),
+                                resize = true,
+                                widget = wibox.widget.imagebox
+                },
+                        direction = 'west',
+                        widget = wibox.container.rotate
+                    },
+                    left = 5,
+                    right = 10,
+                    top = 5,
+                    bottom = 5,
+                    widget = wibox.container.margin
+            },
+            layout = wibox.layout.fixed.horizontal
+    }
+
+
+
+    -- Layout Switcher
+
+   local layoutswitch = {
+        {
+                image = icons.png.screen,
+                buttons = (gears.table.join(
+                awful.button({}, 1, nil, function()
+                        awful.layout.inc(1)
+                end),
+                awful.button({}, 3, nil, function()
+                        awful.layout.inc(-1)
+                end)
+                )),
+                resize = true,
+                widget = wibox.widget.imagebox
+        },
+        top = 5,
+        bottom = 5,
+        left = 10,
+        right = 5,
+        widget = wibox.container.margin
+   }
+
+    -- Theme Switcher
+   local themeswitch = {
+	   {
+		   image = icons.png.burst,
+		   buttons = (gears.table.join(
+		   awful.button({}, 1, nil, function()
+			   awful.spawn.with_shell(gfs.get_configuration_dir() .. "theme/theme-switch.sh")
+		   end)
+		   )),
+		   resize = true,
+		   widget = wibox.widget.imagebox
+	   },
+	   top = 5,
+	   bottom = 5,
+	   left = 5,
+	   right = 20,
+	   widget = wibox.container.margin
+   }
+
     -- Bar
     
     s.wibar = awful.wibar({
-        width = 1900,
+        width = s.geometry["width"] - 200,
         screen = s,
         height = 40,
         bg = "#0000000",
@@ -144,20 +255,24 @@ awful.screen.connect_for_each_screen(function(s)
             expand = "none",
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
-                start,
-                taglist,
+                --start,
+		--wibox.layout.margin(layoutswitch, 10, 10, 5, 5),
+                layoutswitch,
+		themeswitch,
+		taglist,
             },
             {
-                music,
+                --music,
                 layout = wibox.layout.fixed.horizontal, 
             },
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
-                wibox.layout.margin(volume, 12, 12, 16, 16), 
+		wibox.layout.margin(musiccontrol, 10, 10, 0, 0),
+                --wibox.layout.margin(volume, 12, 12, 16, 16), 
                 wibox.layout.margin(clock, 0, 10, 0, 0),
             },
         },
-        bg = "#ffffff",
+        bg = beautiful.bg_second,
         shape = helpers.rrect(beautiful.border_radius),
         widget = wibox.container.background(),
     }
