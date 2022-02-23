@@ -15,19 +15,19 @@ theme.font          = "Roboto Mono Medium 14"
 
 theme.dir = string.format('%s/.config/awesome/theme', os.getenv('HOME'))
 
-theme.wallpaper     = gfs.get_configuration_dir() .. "wallpapers/bright.png"
+theme.wallpaper     = gfs.get_configuration_dir() .. "wallpapers/funny_night.jpg"
 
-theme.bg_normal     = "#f0deff"
+theme.bg_normal     = "#675375"
+--theme.bg_normal     = "#806594"
 theme.bg_focus      = "#9cd6ff"
 theme.bg_widget     = "#f5f5f5"
-theme.bg_second	    = "#FFFFFF"
-theme.text_color    = "#9500ff"
-theme.ansi          ="{'#00d5ff', '#ff00ff', '#009dff', '#c300ff', '#00ccff', '#9500ff', '#0077ff', '#6600ff'}"
-
+theme.bg_second	    = "#4d4454"
+theme.text_color    = "#f0deff"
+theme.ansi          = "{'#00d5ff', '#ff00ff', '#009dff', '#c300ff', '#00ccff', '#bb5cff', '#529dff', '#c573ff'}"
 theme.fg_normal     = "#00aaff"
 theme.fg_focus     = "#ff00ff"
 
-theme.useless_gap   = 15
+theme.useless_gap   = 10
 theme.border_radius = 10
 theme.sidebar_radius = 40
 
@@ -59,7 +59,6 @@ theme.titlebar_floating_button_focus_inactive_hover  = gfs.get_configuration_dir
 theme.titlebar_minimize_button_normal = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
 theme.titlebar_minimize_button_focus  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple.png"
 theme.titlebar_minimize_button_focus_hover  = gfs.get_configuration_dir() .. "icons/titlebar/button_purple_light.png"
-
 
 theme.titlebar_maximized_button_normal_inactive = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"
 theme.titlebar_maximized_button_focus_inactive  = gfs.get_configuration_dir() .. "icons/titlebar/button_blue.png"
