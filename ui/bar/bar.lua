@@ -29,7 +29,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Taglist
 
     -- Set tags and default layout
-    awful.tag({"1", "2", "3", "4", "5", "6"}, s,   awful.layout.suit.tile)
+    awful.tag({"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}, s,   awful.layout.suit.tile)
     
     local taglist_buttons = gears.table.join(
         awful.button({ }, 1, function(t) t:view_only() end),
@@ -122,6 +122,60 @@ awful.screen.connect_for_each_screen(function(s)
 
     start:buttons(gears.table.join(awful.button({ }, 1, function() sidebar_toggle()
     end)))
+
+    --Volume
+    local volume = require("lib.awesome-volume.volume")
+
+
+    --Brightness
+    --
+    local brightness = wibox.widget{
+
+            {
+                    {
+                            {
+                        image = icons.png.chevron,
+                        widget = wibox.widget.imagebox,
+                        buttons = (gears.table.join(
+                                awful.button({},1,nil,function()
+                                awful.spawn.with_shell("xbacklight -dec 5")
+                                end)
+                        )),
+                        resize = true,
+                        },
+                direction = 'south',
+                widget = wibox.container.rotate
+                },
+                top = 5,
+                bottom = 5,
+                left = 10,
+                right = 5,
+                widget = wibox.container.margin
+            },
+            {
+                    {
+                            {
+                        image = icons.png.chevron,
+                        widget = wibox.widget.imagebox,
+                        buttons = (gears.table.join(
+                                awful.button({},1,nil,function()
+                                awful.spawn.with_shell("xbacklight -inc 5")
+                                end)
+                        )),
+                        resize = true,
+                        },
+                direction = 'north',
+                widget = wibox.container.rotate
+                },
+                top = 5,
+                bottom = 5,
+                left = 10,
+                right = 5,
+                widget = wibox.container.margin
+            },
+            layout = wibox.layout.fixed.horizontal
+    }
+
 
     -- Music
 
@@ -267,6 +321,8 @@ awful.screen.connect_for_each_screen(function(s)
             },
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
+		wibox.layout.margin(volume_widget, 0,20,0,0),
+		require("battery-widget") {},
 		wibox.layout.margin(musiccontrol, 10, 10, 0, 0),
                 --wibox.layout.margin(volume, 12, 12, 16, 16), 
                 wibox.layout.margin(clock, 0, 10, 0, 0),

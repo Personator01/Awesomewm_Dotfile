@@ -91,6 +91,28 @@ globalkeys = gears.table.join(
         function() awesome.emit_signal("volume_refresh") end)
     end, {description = "mute audio", group = "audio"}),
 
+    awful.key({ }, "XF86AudioPlay", function () awful.spawn.with_shell("mpc toggle") end),
+    awful.key({ }, "XF86AudioNext", function () awful.spawn.with_shell("mpc next") end),
+    awful.key({ }, "XF86AudioPrev", function () awful.spawn.with_shell("mpc prev") end),
+    
+    -- Brightness
+
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.spawn.with_shell("xbacklight -dec 15") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.spawn.with_shell("xbacklight -inc 15") end),
+    
+    awful.key({modkey,  }, "XF86MonBrightnessDown", function ()
+        awful.spawn.with_shell("xbacklight -dec 5") end),
+    awful.key({modkey,  }, "XF86MonBrightnessUp", function ()
+        awful.spawn.with_shell("xbacklight -inc 5") end),
+
+    awful.key({modkey, "Shift"  }, "XF86MonBrightnessDown", function ()
+        awful.spawn.with_shell("xbacklight -dec 1") end),
+    awful.key({modkey, "Shift"  }, "XF86MonBrightnessUp", function ()
+        awful.spawn.with_shell("xbacklight -inc 1") end),
+
+
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
@@ -98,7 +120,7 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ }, "Print", function () awful.spawn.easy_async_with_shell("scrot -s -q100 ~/Pictures/screenshots/H%M%S.png") end, 
+    awful.key({ }, "Print", function () awful.spawn.easy_async_with_shell("scrot -s -q100 ~/Pictures/screenshots/scr%H-%M-%S.png") end, 
               {description = "take screenshot", group = "screen"}),
     awful.key({ modkey,       }, "Escape", function () awful.spawn.easy_async_with_shell(gfs.get_configuration_dir() .. "scripts/lock.sh") end, 
               {description = "lock the screen", group = "screen"}),

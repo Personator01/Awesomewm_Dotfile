@@ -24,7 +24,7 @@ awful.screen.connect_for_each_screen(function (scr)
 
    local dock = awful.wibar{
       position = "bottom",
-      height = 70,
+      height = 50,
       width = 600,
       screen = scr,
       visible = true,
@@ -58,11 +58,11 @@ awful.screen.connect_for_each_screen(function (scr)
       {
         --spotify,
         --chrome,
-        wibox.layout.margin(firefox,45,30,10,10),
-        wibox.layout.margin(file, 30, 30, 10, 10),
-	wibox.layout.margin(music, 30, 30, 10, 10),
-	wibox.layout.margin(discord,30, 30, 10, 10),
-	wibox.layout.margin(steam, 30, 30, 10, 10),
+        wibox.layout.margin(firefox,70,30,5,5),
+        wibox.layout.margin(file, 30, 30, 5, 5),
+	wibox.layout.margin(music, 30, 30, 5, 5),
+	wibox.layout.margin(discord,30, 30, 5, 5),
+	wibox.layout.margin(steam, 30, 30, 5, 5),
         --netflix,
         --setting,
         layout = wibox.layout.fixed.horizontal,
