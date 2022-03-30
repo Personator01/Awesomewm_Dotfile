@@ -19,9 +19,8 @@ firefox = "firefox"
 steam = "steam"
 music = gfs.get_configuration_dir() .. "scripts/music.sh"
 
-local sc = 0
 
-for scr in screen do
+awful.screen.connect_for_each_screen(function (scr)
 
    local h = 70
    local w = 600
@@ -36,15 +35,9 @@ for scr in screen do
       visible = true,
       bg = "#00000000",
    }
-   
-   local adj = 0
-   if (sc == 1)
-	   then
-		   adj = 3840
-	   end
-
-   dock.x = (scr.geometry["width"]/2) - w/2 + adj
-   dock.y = scr.geometry["height"] - h - 20	
+   dock.screen = scr
+   dock.x = (scr.geometry["width"]/2) - w/2
+   dock.y = scr.geometry["height"] - h	
 
    local function create_img_widget(image, apps)
       local widget = wibox.widget {
@@ -86,5 +79,5 @@ for scr in screen do
     shape = helpers.rrect(beautiful.border_radius * 2),
     widget = wibox.container.background(),
    }
-sc = 1
-end
+
+end)
